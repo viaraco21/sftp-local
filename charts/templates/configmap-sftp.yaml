@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: sftp-users
+data: 
+  users.conf: |
+      foo:123:1001:100
+      bar:abc:1002:100
+      baz:xyz:1003:100
+  
+  

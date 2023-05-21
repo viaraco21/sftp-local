@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: sftp-local-volume
+spec:
+  accessModes:
+  - ReadWriteMany
+  capacity:
+    storage: 20Gi
+  mountOptions:
+    - hard
+    - rsize=1048576
+    - wsize=1048576
+  nfs:
+    path: {{ .Values.volume.path }}
+    server: {{ .Values.volume.server }}
+  persistentVolumeReclaimPolicy: Retain
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: sftp-local-volume-claim
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: "20G"
+  volumeName: sftp-local-volume
+  storageClassName: ""

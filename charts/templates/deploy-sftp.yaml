@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sftp-local
+  labels:
+    app.kubernetes.io/name: sftp-local
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: sftp-local
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: sftp-local
+    spec:
+      containers:
+        - name: sftp-local
+          image: atmoz/sftp
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: ssh
+              containerPort: 22
+              protocol: TCP
+          volumeMounts:
+            - name: sftp-local-volume
+              mountPath: "/home"
+              subPath: ""
+            - mountPath: /etc/sftp/users
+              name: usersconf
+              readOnly: true
+      volumes:
+        - name: sftp-local-volume
+          persistentVolumeClaim:
+            claimName: sftp-local-volume-claim
+        - name: usersconf
+          configMap:
+            defaultMode: 0420
+            name: sftp-users
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sftp-local-service
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: sftp-local
+  ports:
+  - protocol: TCP
+    port: 22
+    targetPort: 22
