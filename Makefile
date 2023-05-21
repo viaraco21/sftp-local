@@ -7,8 +7,8 @@ ifneq ($(BRANCH_NAME),master)
 endif
 
 build:
-	sed -i "s/version\:.*/version: ${VERSION}/g" chart/Chart.yaml
-	sed -i "s/version\:.*/version: ${VERSION}/g" chart/values.yaml
+	sed -i "s/version\:.*/version: ${VERSION}/g" charts/Chart.yaml
+	sed -i "s/version\:.*/version: ${VERSION}/g" charts/values.yaml
 
 	docker build ./app -f ./app/Dockerfile -t docker.totvs.io/renato.cerqueira/sftp-users:${VERSION}
 
