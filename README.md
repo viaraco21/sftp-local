@@ -21,6 +21,7 @@ A solução foi escrita para executar em um cluster kubernetes e para auxiliar n
 
 Passo 1. Compilar as dependencias do chart
 `helm3 dependencies build charts`
+Feito
 
 Passo 2. Ajustar os valores do arquivo values.yaml
 Feito
@@ -28,6 +29,7 @@ Feito
 Passo 3. Realizar a implantação do namespace com o helm
 
 `helm3 upgrade sftp-local chart/ --namespace=sftp-local --install --debug --timeout 30000s`
+Feito
 
 Passo 4. Testar a aplicação. 
 O SFTP estará escutando a porta 22 (sftp-local-service)
