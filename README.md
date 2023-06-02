@@ -28,7 +28,7 @@ Feito
 
 Passo 3. Realizar a implantação do namespace com o helm
 
-`helm3 upgrade sftp-local chart/ --namespace=sftp-local --install --debug --timeout 30000s`
+`helm3 upgrade sftp-local charts/ --namespace=sftp-local --install --debug --timeout 30000s`
 Feito
 
 Passo 4. Testar a aplicação. 
