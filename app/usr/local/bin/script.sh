@@ -4,8 +4,8 @@ set -e
 
 echo iniciando appserver
 
-kubectl get cm-sftp -o yaml > /tmp/cm-sftp.yaml
+kubectl get configmap-sftp -o yaml > /tmp/configmap-sftp.yaml
 
-echo "$user:$pass::::" >> /tmp/cm-sftp.yaml
+echo "$user:$pass::::" >> /tmp/configmap-sftp.yaml
 
-kubectl path cm-sftp -f /tmp/cm-sftp.yaml
+kubectl path configmap-sftp -f /tmp/configmap-sftp.yaml
