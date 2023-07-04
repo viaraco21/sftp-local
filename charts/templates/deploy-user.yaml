@@ -36,7 +36,7 @@ spec:
         - name: usersconf
           configMap:
             defaultMode: 0420
-            name: sftp-users
+            name: sftp-users  
 ---
 apiVersion: v1
 kind: Service

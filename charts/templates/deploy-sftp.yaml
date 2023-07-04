@@ -23,16 +23,16 @@ spec:
               containerPort: 22
               protocol: TCP
           volumeMounts:
-            - name: sftp-local-volume
+            - name: sftp-pv
               mountPath: "/home"
               subPath: ""
-            - mountPath: /etc/sftp/users
+            - mountPath: /etc/sftp
               name: usersconf
               readOnly: true
       volumes:
-        - name: sftp-local-volume
-          persistentVolumeClaim:
-            claimName: sftp-local-volume-claim
+        - name: sftp-pv
+          hostPath:
+           path: /home/docker/volume/sftp
         - name: usersconf
           configMap:
             defaultMode: 0420
