@@ -32,7 +32,7 @@ spec:
       volumes:
         - name: sftp-pv
           hostPath:
-           path: /home/docker/volume/sftp
+           path: /volume/sftp
         - name: usersconf
           configMap:
             defaultMode: 0420
