@@ -36,4 +36,4 @@ O SFTP estará escutando a porta 22 (sftp-local-service)
 e o aplicativo de manutenção de usuários estará escutando na porta 4000 (sftp-users-app)
 
 Utilizar um Docker para testar
-docker run -it -p 8080:4000 -v "/Totvs/Docker/sftp-local:/var/www" node bash 
+docker run -it -p 8081:4000 -v "/Totvs/Docker/sftp-local:/var/www" node bash 
