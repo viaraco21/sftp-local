@@ -1,21 +1,20 @@
 {
-  "name": "node-raco",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "type": "module",
+  "name": "sftp-users-service",
+  "main": "./index.js",
+  "version": "0.0.1",
   "scripts": {
-    "dev": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:dev": "nodemon ./src/index.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "nodemon": "^2.0.15"
-  },
+  "author": "Renato Aurelio",
   "dependencies": {
-    "express": "^4.18.1",
-    "mongoose": "6.6"
+    "console-stamp": "^3.1.1",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "ssh2-sftp-client": "^9.1.0",
+    "ssh2-sftp-server": "^1.1.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
   }
 }
