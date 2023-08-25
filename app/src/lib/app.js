@@ -50,7 +50,7 @@ const buscarusuario = async (req, res) => {
 };
 
 
-const atualizausuario = async (req, res) => {
+/*const atualizausuario = async (req, res) => {
   const usuarioDesejado = req.params.usuario;
   const { senhaNova, grupoNovo } = req.body; // atualizar a senha e o grupo.
 
@@ -96,6 +96,75 @@ const atualizausuario = async (req, res) => {
 //código semelhante ao atualizausuario
 const incluiusuario = async (req, res) => {
   const { usuarioNovo, senhaNova, grupoNovo } = req.body; // incluir um novo usuário com senha e grupo.
+
+  try {
+    // Ler o conteúdo atual do arquivo
+    const data = fs.readFileSync(USERSCONF, 'utf8');
+
+    // Criar uma nova linha para o novo usuário
+    const novaLinha = `${usuarioNovo}:${senhaNova}:${grupoNovo}\n`;
+
+    // Concatenar a nova linha com o conteúdo existente
+    const novoConteudo = data + novaLinha;
+
+    // Executar operações de manipulação de arquivo síncronas
+    const fd = fs.openSync(USERSCONF, 'w');
+    fs.writeSync(fd, novoConteudo);
+    fs.closeSync(fd);
+
+    return res.status(200).json({ message: 'Usuário incluído com sucesso!' });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: 'Erro interno do servidor' });
+  }
+};
+*/
+
+const atualizausuario = async (req, res) => {
+  const usuarioDesejado = req.params.usuario;
+  const { senhaNova, grupoNovo } = req.body; // atualizar a senha e o grupo.
+
+  try {
+    const data = fs.readFileSync(USERSCONF, 'utf8');
+    const linhas = data.split('\n');
+    let novoConteudo = '';
+
+    for (const linha of linhas) {
+      const [usuario, senhaNova, grupoNovo] = linha.split(':');
+      //percorre cada elemento do array separando eles por (dois pontos)
+      //Ele atribui os elementos do array retornado por linha.split(':') a três variáveis diferentes 
+
+      if (usuario === usuarioDesejado) {
+        // Encontrou o usuário, atualiza as informações
+        novoConteudo += `${usuario}:${senhaNova}:${grupoNovo}\n`; //responsável por criar uma nova linha de conteúdo no formato
+        //novoConteudo += ...: adiciona uma nova linha ao conteúdo novoConteúdo. 
+        //O operador += é usado para concatenar strings.
+      } else {
+        // Mantenha as outras linhas inalteradas
+        novoConteudo += linha + '\n';
+      }
+    }
+
+    //executa operações de manipulação de 'arquivo síncronas' 
+    const fd = fs.openSync(USERSCONF, 'w');
+    //abre o arquivo especificado em modo de escrita ('w'). A função fs.openSync 'retorna um descritor de arquivo' (fd), 
+    //que é um identificador numérico para o arquivo aberto.
+    fs.writeSync(fd, novoConteudo);
+    //escreve o conteúdo da variável novoConteúdo no arquivo associado ao descritor de arquivo fd. 
+    //O conteúdo é escrito de forma síncrona, 
+    //o que significa que o programa aguardará até que a operação de escrita seja concluída antes de continuar a execução.
+    fs.closeSync(fd);
+    //fecha o arquivo associado ao descritor de arquivo fd. 
+    //Após fechar o arquivo, ele não poderá mais ser usado para leitura ou escrita, a menos que seja aberto novamente.
+    return res.status(200).json({ message: 'Usuário atualizado com sucesso!' });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: 'Erro interno do servidor' });
+  }
+};
+
+const incluiusuario = async (req, res) => {
+  const { usuarioNovo, senhaNova, grupoNovo } = req.body; // Suponhamos que você queira incluir um novo usuário com senha e grupo.
 
   try {
     // Ler o conteúdo atual do arquivo
