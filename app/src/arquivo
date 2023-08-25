@@ -1,0 +1,5 @@
+docker run -it -p 8080:6000 -v "/Totvs/Docker/node-raco:/var/www" node bash
+
+var/www
+
+npm run dev
