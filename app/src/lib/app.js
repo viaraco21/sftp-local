@@ -5,12 +5,14 @@ const USERSCONF = './users.conf';
 const fs = require('fs')
 
 const listartodos = async (req, res) => {
+//variável que armazena uma função que lista todos os usuários do sistema.    
   let retorno = true
 
   try {
     const data = fs.readFileSync(USERSCONF, 'utf8')
     // const data é usado para ler o conteúdo de um arquivo de texto síncrono e armazenar esse conteúdo na variável data.
-    
+    //fs.readFileSync é uma função fornecida pelo módulo fs do Node.js que permite ler um arquivo de forma síncrona,
+    //ou seja, bloqueante. Isso significa que o programa espera até que a operação de leitura seja concluída antes de continuar a execução.
     return res.json(data);
 
   } catch (err) {
@@ -50,7 +52,7 @@ const buscarusuario = async (req, res) => {
 
 const atualizausuario = async (req, res) => {
   const usuarioDesejado = req.params.usuario;
-  const { senhaNova, grupoNovo } = req.body; // Suponhamos que você queira atualizar a senha e o grupo.
+  const { senhaNova, grupoNovo } = req.body; //atualizar a senha e o grupo.
 
   try {
     const data = fs.readFileSync(USERSCONF, 'utf8');
@@ -72,7 +74,6 @@ const atualizausuario = async (req, res) => {
         novoConteudo += linha + '\n';
       }
     }
-
     //executa operações de manipulação de 'arquivo síncronas' 
     const fd = fs.openSync(USERSCONF, 'w');
     //abre o arquivo especificado em modo de escrita ('w'). A função fs.openSync 'retorna um descritor de arquivo' (fd), 
@@ -90,7 +91,7 @@ const atualizausuario = async (req, res) => {
     return res.status(500).json({ error: 'Erro interno do servidor' });
   }
 };
-
+//código semelhante ao atualizausuario
 const incluiusuario = async (req, res) => {
   const { usuarioNovo, senhaNova, grupoNovo } = req.body; //incluir um novo usuário com senha e grupo.
 
