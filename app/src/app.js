@@ -16,5 +16,5 @@ routes(app);
 //e transformar aquilo em um objeto para eu poder armazenar, visualizar e manipular.
 app.use(express.json())
 
-
+//funcionando
 export default app                                      
