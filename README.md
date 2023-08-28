@@ -37,3 +37,17 @@ e o aplicativo de manutenção de usuários estará escutando na porta 4000 (sft
 
 Utilizar um Docker para testar
 docker run -it -p 8081:4000 -v "/Totvs/Docker/sftp-local:/var/www" node bash 
+
+depois de executar o make build
+pegar a imagem no docker atraves do docker images ls para criar o container
+
+docker run -d --name sftp-user --hostname sftp-user-svc -p 8081:4000 --entrypoint "/bin/bash" -it id-imagemdf9ff13555c4             
+vai criar um container 
+
+docker exec -it bec3de464602024c44e3209f71eb7878ae75f3112026d6fd96d692c49db19584 bash
+para entrar em um container
+
+node src/index.js 
+para executar a aplicação
+
+curl localhost:8081/users/foo 
