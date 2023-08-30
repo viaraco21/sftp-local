@@ -1,4 +1,4 @@
-version: 0.0.1-612f1254
+version: 0.0.1-1eb96482
 volume:
-  path: /raco-program/
+  path: /Totvs/Docker/raco-program
   server: 172.17.0.1

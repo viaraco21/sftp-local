@@ -51,3 +51,13 @@ node src/index.js
 para executar a aplicação
 
 curl localhost:8081/users/foo 
+
+curl --request GET \                                                       8379  07:42:15  
+  --url 'http://localhost:8081/users?=' \
+  --header 'Content-Type: application/json'  
+
+
+curl --request POST \                                                      8379  07:42:15  
+  --url 'http://localhost:8081/users' \  
+  --header 'Content-Type: application/json' \
+  --data '{"usuarioNovo": "dim", "senhaNova": "302", "grupoNovo": "1002"}'
