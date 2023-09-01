@@ -2,7 +2,7 @@
 'use strict'
 //ajuda a evitar erros sutis e comportamentos inesperados. 
 
-const USERSCONF = './users.conf';
+const USERSCONF = '/users.conf';
 //cria uma constante chamada USERSCONF que armazena o caminho relativo para um arquivo chamado users.conf
 const fs = require('fs')
 //importa o módulo fs (File System) no Node.js. 

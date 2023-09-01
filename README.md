@@ -35,7 +35,7 @@ Passo 4. Testar a aplicação.
 O SFTP estará escutando a porta 22 (sftp-local-service)
 e o aplicativo de manutenção de usuários estará escutando na porta 4000 (sftp-users-app)
 
-Utilizar um Docker para testar
+Utilizar um Docker para testar localmente
 docker run -it -p 8081:4000 -v "/Totvs/Docker/sftp-local:/var/www" node bash 
 
 depois de executar o make build
@@ -52,12 +52,25 @@ para executar a aplicação
 
 curl localhost:8081/users/foo 
 
-curl --request GET \                                                       8379  07:42:15  
+curl --request GET \ 
   --url 'http://localhost:8081/users?=' \
   --header 'Content-Type: application/json'  
 
 
-curl --request POST \                                                      8379  07:42:15  
+curl --request POST \ 
   --url 'http://localhost:8081/users' \  
   --header 'Content-Type: application/json' \
   --data '{"usuarioNovo": "dim", "senhaNova": "302", "grupoNovo": "1002"}'
+
+kubernetes ***********************
+k -n sftp-local port-forward sftp-local-container 3003:22
+comando para fazer a coneão
+
+k -n sftp-local exec -it sftp-local-container bash
+comando para entrar no container do pod
+
+sftp -P 3003 bar@localhost  
+comando para entrar no sftp
+
+minikube ssh 
+comando para entrar no volume

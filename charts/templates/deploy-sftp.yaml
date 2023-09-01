@@ -32,7 +32,7 @@ spec:
       volumes:
         - name: sftp-pv
           hostPath:
-           path: /volume/sftp
+           path: /home/docker/volume/sftp # volume criado no minikube ssh
         - name: usersconf
           configMap:
             defaultMode: 0420
