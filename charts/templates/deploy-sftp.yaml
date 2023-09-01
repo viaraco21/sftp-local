@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: sftp-local
-          image: atmoz/sftp
+          image: atmoz/sftp # imagem que tem a estrutura do sftp
           imagePullPolicy: IfNotPresent
           ports:
             - name: ssh
@@ -24,9 +24,9 @@ spec:
               protocol: TCP
           volumeMounts:
             - name: sftp-pv
-              mountPath: "/home"
+              mountPath: "/home" # volume/sftp local criado no minikube ssh
               subPath: ""
-            - mountPath: /etc/sftp
+            - mountPath: /etc/sftp # users.conf mapeado do configmap
               name: usersconf
               readOnly: true
       volumes:
