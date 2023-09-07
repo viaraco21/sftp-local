@@ -2,7 +2,7 @@
 'use strict'
 //ajuda a evitar erros sutis e comportamentos inesperados. 
 
-const USERSCONF = '/users.conf';
+const USERSCONF = './users.conf';
 //cria uma constante chamada USERSCONF que armazena o caminho relativo para um arquivo chamado users.conf
 const fs = require('fs')
 //importa o módulo fs (File System) no Node.js. 
@@ -119,7 +119,6 @@ const incluiusuario = async (req, res) => {
     return res.status(500).json({ error: 'Erro interno do servidor' });
   }
 };
-
 
 //semelhante ao incluiusuario
 const deletausuario = async (req, res) => {

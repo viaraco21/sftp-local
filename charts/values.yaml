@@ -1,4 +1,4 @@
 version: 0.0.2-b26261c9
 volume:
-  path: /Totvs/Docker/raco-program
+  path: /Totvs/Docker/sftp-local
   server: 172.17.0.1

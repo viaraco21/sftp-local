@@ -1,0 +1,12 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: configmap-updater-role
+rules:
+- apiGroups: [""]
+  resources: ["configmaps"]
+  verbs: ["get", "update"]
+
+
+# Criado um arquivo YAML, "configmap-updater-role.yaml"
+# Este Role permite a leitura e escrita no ConfigMap sftp-users.

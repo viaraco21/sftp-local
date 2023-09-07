@@ -17,14 +17,15 @@ spec:
       containers:
         - name: sftp-local
           image: atmoz/sftp # imagem que tem a estrutura do sftp
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: IfNotPresent #significa que o Kubernetes verificará se a imagem já está presente no nó onde o pod está sendo implantado.
+          # imagePullPolicy: Always - Sempre buscar a imagem mais recente
           ports:
             - name: ssh
               containerPort: 22
               protocol: TCP
           volumeMounts:
             - name: sftp-pv
-              mountPath: "/home" # volume/sftp local criado no minikube ssh
+              mountPath: "/home" # volume/sftp local criado no minikube ssh contém usuarios foo bar baz
               subPath: ""
             - mountPath: /etc/sftp # users.conf mapeado do configmap
               name: usersconf
@@ -32,9 +33,9 @@ spec:
       volumes:
         - name: sftp-pv
           hostPath:
-           path: /home/docker/volume/sftp # volume criado no minikube ssh
+           path: /volume/sftp # volume criado no minikube ssh 
         - name: usersconf
-          configMap:
+          configMap: # contem informações dos usuario
             defaultMode: 0420
             name: sftp-users
 ---

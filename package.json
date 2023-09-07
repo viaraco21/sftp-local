@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@kubernetes/client-node": "^0.18.1",
     "ssh2-sftp-client": "^9.1.0"
   }
 }
