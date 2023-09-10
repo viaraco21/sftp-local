@@ -4,6 +4,9 @@
 
 const USERSCONF = './users.conf';
 //cria uma constante chamada USERSCONF que armazena o caminho relativo para um arquivo chamado users.conf
+
+
+
 const fs = require('fs')
 //importa o módulo fs (File System) no Node.js. 
 
@@ -156,3 +159,18 @@ const deletausuario = async (req, res) => {
 };
 
 module.exports = { listartodos, buscarusuario, atualizausuario, incluiusuario, deletausuario };
+
+
+//executa um script Bash na aplicação Node.js usando o módulo child_process
+const exec = require('child_process').exec;
+
+const BINARY_FILE = "./script.sh";
+
+exec(`bash ${BINARY_FILE}`, (error, stdout, stderr) => {
+  if (error) {
+    console.error(`Erro ao executar o script: ${error}`);
+    return;
+  }
+
+  console.log(`Saída do script: ${stdout}`);
+});

@@ -1,0 +1,17 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: default
+  name: my-role
+rules:
+- apiGroups: [""]
+  resources: ["pods", "services", "configmaps"]  # Adicione os recursos que seu token precisa acessar
+  verbs: ["get", "list", "watch", "create", "update", "delete"]
+
+
+# Arquivo YAML para a Role que define a Role para o meu namespace
+
+# yaml acima concede permissões para acessar Pods, Services e ConfigMaps no namespace especificado
+
+# Para conceder permissões a um token de serviço (Service Account Token)
+# E acessar um namespace específico no Kubernetes, é preciso criar Roles e RoleBindings
