@@ -1,4 +1,4 @@
-version: 0.0.2-b26261c9
+version: 0.0.3-eb5604cd
 volume:
   path: /Totvs/Docker/sftp-local
   server: 172.17.0.1

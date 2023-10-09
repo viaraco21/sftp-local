@@ -17,8 +17,8 @@ spec:
       imagePullSecrets:
         - name: image-pull-secret
       containers:
-        - name: smarttransfer
-          image: docker.totvs.io/renato.cerqueira/sftp-users:{{ .Values.version }}
+        - name: sftp-local
+          image: "docker.totvs.io/renato.cerqueira/sftp-users:{{ .Values.version }}"
           imagePullPolicy: IfNotPresent
           env:
           - name: NAMESPACE
